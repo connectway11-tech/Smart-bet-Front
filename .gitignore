@@ -1,0 +1,49 @@
+# Flutter / Dart
+.dart_tool/
+/.idea/
+.vscode/
+build/
+/.packages
+pubspec.lock
+
+# macOS
+.DS_Store
+
+# Generated files
+**/GeneratedPluginRegistrant.*
+
+# Android
+/android/.gradle/
+/android/app/*.keystore
+/android/key.properties
+/android/local.properties
+
+# iOS
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Flutter.podspec
+/ios/Pods/
+/ios/Runner/GeneratedPluginRegistrant.*
+/ios/Runner/GoogleService-Info.plist
+
+# IDE and editor folders
+*.iml
+.idea/
+.vscode/
+
+# Secrets and certificates
+*.jks
+*.keystore
+*.p12
+*.pem
+*.env
+.env.*
+secrets.json
+
+# OS files
+Thumbs.db
+
+# Test outputs
+/coverage/
+
+# Keep assets and source code tracked
+!assets/
