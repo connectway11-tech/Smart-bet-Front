@@ -4,6 +4,7 @@
 .vscode/
 build/
 /.packages
+.flutter-plugins-dependencies
 
 # macOS
 .DS_Store
