@@ -4,22 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvp/widgets/home_page.dart';
 
 void main() {
-  testWidgets('HomePage shows 6 game cards with "Ver" (6 real games)', (WidgetTester tester) async {
-    // Avoid using MyApp which loads google_fonts; instantiate HomePage within a basic MaterialApp
-  await tester.pumpWidget(MaterialApp(home: HomePage()));
+  testWidgets('HomePage shows 6 real game cards plus more games card', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(home: HomePage()));
     await tester.pumpAndSettle();
 
-    // Each real game card displays the word 'Ver' in the bottom-right; the "Más Juegos" card doesn't.
-    final verFinder = find.text('Ver');
-    expect(verFinder, findsNWidgets(6));
+    expect(find.byType(GameCard), findsNWidgets(6));
+    expect(find.byType(MoreGamesCard), findsOneWidget);
   });
 
-  testWidgets('SVG assets are present as SvgPicture widgets', (WidgetTester tester) async {
-  await tester.pumpWidget(MaterialApp(home: HomePage()));
-  await tester.pumpAndSettle();
+  testWidgets('Game logos render as svg or raster assets', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(home: HomePage()));
+    await tester.pumpAndSettle();
 
-    final svgFinder = find.byType(SvgPicture);
-    // We expect at least one SvgPicture per real game (6)
-    expect(svgFinder, findsAtLeastNWidgets(6));
+    final logoFinder = find.byWidgetPredicate(
+      (widget) => widget is SvgPicture || widget is Image,
+    );
+    expect(logoFinder, findsAtLeastNWidgets(6));
   });
 }
